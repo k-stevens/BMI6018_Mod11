@@ -1,0 +1,25 @@
+import pandas as pd
+
+breast_cancer = pd.read_csv(r"C:\Users\kisab\Downloads\breast-cancer.data")
+
+
+breast_cancer.columns = ['Class','Age','Menopause','Tumor-size','Inv-nodes','Node-caps','Deg-melig','Breast','Breast-quad','Irradiate']
+
+import matplotlib.pyplot as plt
+
+#breast_cancer.groupby(["Tumor-size"]).count()
+#print(breast_cancer)
+
+breast_cancer['Count'] = breast_cancer.groupby('Tumor-size')['Tumor-size'].transform('count')
+breast_cancer1 = breast_cancer.groupby(['Tumor-size']).size().reset_index().rename(columns={0:'count'})
+
+
+print(breast_cancer1)
+
+
+
+plt.bar(breast_cancer1['Tumor-size'], breast_cancer1['count'])
+plt.title('Frequency of Tumor Size')
+plt.xlabel('Tumor Size')
+plt.ylabel('# of Patients')
+plt.show()
