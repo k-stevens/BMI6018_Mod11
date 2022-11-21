@@ -23,3 +23,27 @@ plt.title('Frequency of Tumor Size')
 plt.xlabel('Tumor Size')
 plt.ylabel('# of Patients')
 plt.show()
+
+
+
+
+import pandas as pd
+
+heart_data = pd.read_csv(r"C:\Users\kisab\Downloads\arrhythmia.data")
+
+
+import matplotlib.pyplot as plt
+
+
+age_data = heart_data.iloc[:, 0]
+
+heartrate_data= heart_data.iloc[:,14]
+
+plt.scatter(age_data, heartrate_data, s=10)
+
+plt.title("Analysis of Heart Rate based on Age", fontsize=18)
+  
+plt.xlabel('Age', fontsize=18)
+plt.ylabel('Heart Rate', fontsize=18)
+
+plt.show()
