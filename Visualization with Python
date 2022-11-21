@@ -29,6 +29,29 @@ plt.show()
 
 import pandas as pd
 
+breast_cancer = pd.read_csv(r"C:\Users\kisab\Downloads\breast-cancer.data")
+
+
+breast_cancer.columns = ['Class','Age','Menopause','Tumor-size','Inv-nodes','Node-caps','Deg-melig','Breast','Breast-quad','Irradiate']
+
+import matplotlib.pyplot as plt
+
+breast_cancer['Count2'] = breast_cancer.groupby('Age')['Age'].transform('count')
+breast_cancer2 = breast_cancer.groupby(['Age']).size().reset_index().rename(columns={0:'count'})
+
+print(breast_cancer2)
+#plot.title('Distribution of Patient Age in Dataset')
+breast_cancer2.groupby(['Age']).sum().plot(kind='pie', y='count',title='Distribution of Patient Age in Dataset')
+
+
+
+
+
+
+
+
+import pandas as pd
+
 heart_data = pd.read_csv(r"C:\Users\kisab\Downloads\arrhythmia.data")
 
 
