@@ -10,12 +10,23 @@ import matplotlib.pyplot as plt
 #breast_cancer.groupby(["Tumor-size"]).count()
 #print(breast_cancer)
 
-breast_cancer['Count'] = breast_cancer.groupby('Tumor-size')['Tumor-size'].transform('count')
-breast_cancer1 = breast_cancer.groupby(['Tumor-size']).size().reset_index().rename(columns={0:'count'})
+fig, ax = plt.subplots(figsize=(12, 6))
 
+breast_cancer2=breast_cancer.replace('5-9','05-09')
+
+breast_cancer2['Count'] = breast_cancer2.groupby('Tumor-size')['Tumor-size'].transform('count')
+breast_cancer2 = breast_cancer2.groupby(['Tumor-size']).size().reset_index().rename(columns={0:'count'})
+#breast_cancer2=breast_cancer1.replace('5-9','05-09')
 
 print(breast_cancer1)
 
+
+
+plt.bar(breast_cancer2['Tumor-size'], breast_cancer2['count'])
+plt.title('Frequency of Tumor Size')
+plt.xlabel('Tumor Size')
+plt.ylabel('# of Patients')
+plt.show()
 
 
 plt.bar(breast_cancer1['Tumor-size'], breast_cancer1['count'])
@@ -41,8 +52,9 @@ breast_cancer2 = breast_cancer.groupby(['Age']).size().reset_index().rename(colu
 
 print(breast_cancer2)
 #plot.title('Distribution of Patient Age in Dataset')
-breast_cancer2.groupby(['Age']).sum().plot(kind='pie', y='count',title='Distribution of Patient Age in Dataset')
-
+breast_cancer2.groupby(['Age']).sum().plot(kind='pie', y='count',title='Distribution of Patient Age in Breast Cancer Dataset')
+fig = plt.gcf()
+fig.set_size_inches(7,7)
 
 
 
