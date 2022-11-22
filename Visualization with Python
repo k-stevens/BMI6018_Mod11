@@ -62,6 +62,40 @@ fig.set_size_inches(7,7)
 
 
 
+import pandas as pd
+
+breast_cancer = pd.read_csv(r"C:\Users\kisab\Downloads\breast-cancer.data")
+
+
+breast_cancer.columns = ['Class','Age','Menopause','Tumor-size','Inv-nodes','Node-caps','Deg-melig','Breast','Breast-quad','Irradiate']
+breast_cancer=breast_cancer.replace('5-9','05-09')
+breast_cancer_sort=breast_cancer.groupby(["Tumor-size"]).mean()
+breast_cancer2 = breast_cancer.groupby(['Tumor-size']).mean().reset_index().rename(columns={0:'count'})
+print(breast_cancer_sort)
+
+
+import matplotlib.pyplot as plt
+
+
+#print(breast_cancer)
+
+
+fig, ax = plt.subplots(figsize=(12, 6))
+
+plt.bar(breast_cancer2['Tumor-size'], breast_cancer_sort['Deg-melig'])
+plt.title('Average Degree of Malignancy based on Tumor Size')
+plt.xlabel('Tumor Size')
+plt.ylabel('Average Degree of Malignancy')
+plt.show()
+
+
+
+
+
+
+
+
+
 
 import pandas as pd
 
