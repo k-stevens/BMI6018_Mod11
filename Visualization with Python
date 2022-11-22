@@ -62,19 +62,22 @@ fig.set_size_inches(7,7)
 
 
 
+
 import pandas as pd
 
 heart_data = pd.read_csv(r"C:\Users\kisab\Downloads\arrhythmia.data")
 
 
 import matplotlib.pyplot as plt
-
+fig, ax = plt.subplots(figsize=(24, 12))
 
 age_data = heart_data.iloc[:, 0]
 
 heartrate_data= heart_data.iloc[:,14]
+heartrate_data2=heart_data.iloc[:,14].sort_values()
 
-plt.scatter(age_data, heartrate_data, s=10)
+
+plt.scatter(age_data, heartrate_data2, s=15)
 
 plt.title("Analysis of Heart Rate based on Age", fontsize=18)
   
