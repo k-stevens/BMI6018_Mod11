@@ -121,6 +121,46 @@ plt.show()
 
 
 #Visualization 4
+#This is using the arrhythmia to create a scatter plot.
+#I wanted to show a third type of visualization I could plot and found better data here than the breast cancer set.
+#I wanted to compare heartrate to weight to see if there is a negative correlation, as there is in animals.
+#(Elephants have lower heartrates and hamsters have higher heartrates).
+#It could also show the effect of weight on the heart and be useful data.
+#To do this, I used the weight as the x-axis and the heartrate as the y-axis.
+#This plot takes each person's weight and heartrate combo and compares it to each other patient.
+#The title and axes are labeled, so I don't think a legend is needed.
+#The data is most dense between 60-100 BPM, which is consistent with the fact that the average heartrate is 60-100 BPM.
+
+
+
+import pandas as pd
+
+heart_data = pd.read_csv(r"C:\Users\kisab\Downloads\arrhythmia.data")
+
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(24, 12))
+
+age_data = heart_data.iloc[:, 0]
+
+#heart_data.str.zfill(3)
+
+weight_data= heart_data.iloc[:,3]
+weight_data2=heart_data.iloc[:,3].sort_values()
+
+
+plt.scatter(age_data, weight_data2, s=15)
+
+plt.title("Analysis of Heart Rate based on Weight (in kg)", fontsize=18)
+  
+plt.xlabel('Weight (in kg)', fontsize=18)
+plt.ylabel('Heart Rate (BPM)', fontsize=18)
+
+plt.show()
+
+#Bonus
+#Visualization 5
+
 #This is a scatter plot using the arrhythmia data provided. I wanted to show a third type of visualization.
 #It shows a patient's weight and heartrate compared to other patients.
 #The weight is on the x-axis and the heartrate is on the y-axis.
